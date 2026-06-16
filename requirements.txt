@@ -1,0 +1,26 @@
+# Core AI Voice Agent dependencies
+faster-whisper==1.0.3
+gTTS==2.5.4
+scikit-learn==1.5.2
+joblib==1.4.2
+numpy==1.26.4
+pandas==2.2.3
+
+# Audio input/output
+sounddevice==0.5.0
+soundfile==0.12.1
+pydub==0.25.1
+playsound==1.3.0
+
+# Speech/audio utilities
+SpeechRecognition==3.10.4
+
+# Email automation
+python-dotenv==1.0.1
+
+# Optional: API/backend support if you later add Flask endpoints
+Flask==3.0.3
+requests==2.32.3
+
+# Testing
+pytest==8.3.3
