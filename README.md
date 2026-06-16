@@ -4,13 +4,52 @@ An AI-powered voice assistant capable of handling real-time customer conversatio
 
 ---
 
+## Demo
+
+### Current Status
+
+* Speech-to-Text using Faster-Whisper
+* Tamil and Tanglish Order Extraction
+* Custom Scikit-Learn SLM
+* gTTS Voice Responses
+* SMTP Email Automation
+* Microphone Testing Completed
+* Bluetooth Microphone Testing Completed
+* Phone Call Integration In Progress
+
+---
+
+## Key Features
+
+* Tamil and Tanglish speech processing
+* Faster-Whisper based speech recognition
+* Custom machine learning order extraction model
+* Automated email notification system
+* Modular architecture for future phone-call integration
+* Real-time voice interaction workflow
+* Extensible design for future LLM integration
+
+---
+
+## Architecture Diagram
+
+![Architecture](architecture.png)
+
+---
+
+## Workflow Diagram
+
+![Workflow](workflow.png)
+
+---
+
 ## Project Overview
 
-This project demonstrates how Artificial Intelligence can be integrated with telephony and voice technologies to create an autonomous voice assistant.
+This project demonstrates how Artificial Intelligence can be integrated with voice technologies to create an autonomous voice assistant.
 
-The AI Voice Agent listens to user speech, converts it into text, processes the request using a language model, generates an intelligent response, converts the response back to speech, and communicates it to the caller.
+The AI Voice Agent listens to user speech, converts it into text, processes the request using a custom machine learning model, generates an appropriate response, converts the response back into speech, and communicates it to the user.
 
-The system can also trigger automated actions such as order processing and email notifications based on the conversation.
+The system can also trigger automated actions such as email notifications based on the conversation.
 
 ---
 
@@ -18,37 +57,45 @@ The system can also trigger automated actions such as order processing and email
 
 * Real-time voice conversation handling
 * Speech-to-Text (STT) processing
-* AI-powered response generation
+* AI-powered order extraction
 * Text-to-Speech (TTS) synthesis
 * Restaurant order-taking workflow
 * Automated email notifications
 * Modular architecture for future integrations
-* Tamil language support (Work in Progress)
+* Tamil language support
 
 ---
 
 ## System Architecture
 
 ```text
-Customer Call
+User Speech
       │
       ▼
-Speech-to-Text (STT)
+Faster-Whisper STT
       │
       ▼
-Language Model Processing
+Tamil/Tanglish Transcript
+      │
+      ▼
+Coimbatore_SLM
+(Scikit-Learn Model)
+      │
+      ▼
+Order Extraction
+(Food, Area, Quantity)
       │
       ▼
 Response Generation
       │
       ▼
-Text-to-Speech (TTS)
+gTTS
       │
       ▼
-Voice Response to User
+Voice Response
       │
       ▼
-Order Processing / Email Notification
+SMTP Email Notification
 ```
 
 ---
@@ -59,16 +106,22 @@ Order Processing / Email Notification
 
 * Python
 
-### AI Components
+### Speech Processing
 
-* Small Language Models (SLM)
-* Speech Recognition
-* Natural Language Processing
+* Faster-Whisper
 
-### Voice Technologies
+### Machine Learning
 
-* Speech-to-Text (STT)
-* Text-to-Speech (TTS)
+* Scikit-Learn
+* Joblib
+
+### Text-to-Speech
+
+* gTTS
+
+### Communication
+
+* SMTP Email Automation
 
 ### Development Tools
 
@@ -84,69 +137,68 @@ Order Processing / Email Notification
 ```text
 AI-voice-Agent/
 │
-├── agent.py
+├── slm/
+│   └── Custom Order Extraction Model
 │
 ├── stt/
-│   └── Speech Recognition Components
-│
-├── slm/
-│   └── Language Model Processing
+│   └── Faster-Whisper Components
 │
 ├── tts/
-│   └── Text-to-Speech Components
+│   └── gTTS Components
 │
 ├── utils/
 │   └── Helper Functions
 │
-└── tests/
-    └── Test Scripts
+├── tests/
+│   └── Test Scripts
+│
+├── agent.py
+├── requirements.txt
+├── LICENSE
+├── architecture.png
+├── workflow.png
+└── README.md
 ```
 
 ---
 
 ## Workflow
 
-1. User speaks through the connected audio device.
-2. Speech is converted into text using Speech-to-Text.
-3. The text is processed by the language model.
-4. The model generates an appropriate response.
-5. The response is converted into speech.
-6. The generated voice is played back to the user.
-7. Optional actions such as email notifications are triggered.
+1. User speaks through the microphone.
+2. Faster-Whisper converts speech into text.
+3. Tamil/Tanglish text is processed by the custom Coimbatore_SLM model.
+4. The model extracts food items, quantities, and location information.
+5. The system generates a confirmation response.
+6. gTTS converts the response into speech.
+7. The generated voice is played back to the user.
+8. Order details are sent through email notifications.
 
 ---
 
-## Use Cases
+## Current Technology Stack
 
-### Restaurant Order Assistant
-
-* Accept customer orders
-* Confirm order details
-* Generate order summaries
-* Send notifications
-
-### Customer Support
-
-* Answer frequently asked questions
-* Handle basic customer queries
-* Route requests for further processing
-
-### Voice Automation
-
-* Automated call handling
-* Information collection
-* Task execution through voice commands
+| Component        | Technology                 |
+| ---------------- | -------------------------- |
+| STT              | Faster-Whisper             |
+| TTS              | gTTS                       |
+| NLU              | Custom Coimbatore_SLM      |
+| ML Framework     | Scikit-Learn               |
+| Email            | SMTP                       |
+| Language         | Tamil + Tanglish           |
+| Audio Input      | Laptop Mic / Bluetooth Mic |
+| Call Integration | In Progress                |
 
 ---
 
 ## Future Improvements
 
-* Full Tamil conversational support
-* Integration with local Large Language Models
-* Real-time call integration
-* WhatsApp integration
-* Database-backed order management
+* Live phone-call integration
+* Bluetooth HFP call routing
+* Local LLM integration (Phi-3, Gemma)
+* Piper or XTTS voice synthesis
 * Multi-language support
+* Database-backed order management
+* WhatsApp integration
 * Cloud deployment
 
 ---
@@ -157,18 +209,19 @@ Through this project, I gained practical experience in:
 
 * Speech Recognition
 * Text-to-Speech Systems
-* AI Voice Agents
-* Natural Language Processing
+* Voice AI Applications
+* Machine Learning Model Integration
 * Python Application Development
 * Linux-based Development
-* Modular System Design
+* Email Automation
+* Modular Software Architecture
 
 ---
 
 ## Author
 
-Vishwa Sabaris V
+**Vishwa Sabaris V**
 
-B.E. Computer Science and Engineering (AI & ML)
+B.E. Computer Science and Engineering (Artificial Intelligence & Machine Learning)
 
 Kalaignar Karunanidhi Institute of Technology (KIT), Coimbatore
